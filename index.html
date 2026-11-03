@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
     <title>Mimoca | Feito com Afeto</title>
 
     <style>
@@ -42,19 +46,33 @@
             padding: 20px;
             font-size: 14px;
         }
+
+        #teste-supabase {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #FFF8F1;
+            font-size: 14px;
+        }
     </style>
+
+    <!-- Biblioteca Supabase -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<script>
-  const SUPABASE_URL = "https://pckdixsmulkvdezptlbn.supabase.co";
+    <!-- Configuração Supabase -->
+    <script>
+        const SUPABASE_URL =
+            "https://pckdixsmulkvdezptlbn.supabase.co";
 
-  const SUPABASE_KEY = "sb_publishable_esy8-aj09LTZ_L_QKEzH9w_8YHGdRlI";
+        const SUPABASE_KEY =
+            "sb_publishable_esy8-aj09LTZ_L_QKEzH9w_8YHGdRlI";
 
-  const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
-</script>
+        const supabaseClient = window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+    </script>
+
 </head>
 
 <body>
@@ -65,56 +83,78 @@
     </header>
 
     <div class="container">
+
         <div class="card">
+
             <h2>Bem-vindo à Mimoca!</h2>
+
             <p>Delícias feitas com carinho.</p>
+
             <p>Nosso sistema está chegando!</p>
+
+            <!-- Resultado do teste -->
+            <div id="teste-supabase">
+                Aguardando teste...
+            </div>
+
         </div>
+
     </div>
-
-    <script>
-  async function testarSupabase() {
-    const resultado = document.getElementById("teste-supabase");
-
-    resultado.textContent = "Testando conexão com Supabase...";
-
-    try {
-      const resposta = await fetch(
-        SUPABASE_URL + "/auth/v1/health",
-        {
-          headers: {
-            "apikey": SUPABASE_KEY
-          }
-        }
-      );
-
-      if (resposta.ok) {
-        resultado.textContent =
-          "✅ Comunicação com Supabase funcionando!";
-      } else {
-        resultado.textContent =
-          "❌ Erro na conexão. Código: " + resposta.status;
-      }
-    } catch (erro) {
-      resultado.textContent =
-        "❌ Não foi possível conectar ao Supabase.";
-      console.error(erro);
-    }
-  }
-
-  testarSupabase();
-</script>
-
-<div
-  id="teste-supabase"
-  style="text-align:center; padding:20px; font-family:Arial;"
->
-  Aguardando teste...
-</div>
 
     <footer>
         © 2026 Mimoca — Feito com Afeto
     </footer>
 
+    <!-- Teste de comunicação com Supabase -->
+    <script>
+
+        async function testarSupabase() {
+
+            const resultado =
+                document.getElementById("teste-supabase");
+
+            resultado.textContent =
+                "Testando conexão com Supabase...";
+
+            try {
+
+                const resposta = await fetch(
+                    SUPABASE_URL + "/auth/v1/health",
+                    {
+                        headers: {
+                            "apikey": SUPABASE_KEY
+                        }
+                    }
+                );
+
+                if (resposta.ok) {
+
+                    resultado.textContent =
+                        "✅ Comunicação com Supabase funcionando!";
+
+                } else {
+
+                    resultado.textContent =
+                        "❌ Erro na conexão. Código: " +
+                        resposta.status;
+
+                }
+
+            } catch (erro) {
+
+                resultado.textContent =
+                    "❌ Não foi possível conectar ao Supabase.";
+
+                console.error(erro);
+
+            }
+
+        }
+
+        testarSupabase();
+
+    </script>
+
 </body>
+
 </html>
