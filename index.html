@@ -75,6 +75,44 @@
     <footer>
         © 2026 Mimoca — Feito com Afeto
     </footer>
+<script>
+  async function testarSupabase() {
+    const resultado = document.getElementById("teste-supabase");
 
+    resultado.textContent = "Testando conexão com Supabase...";
+
+    try {
+      const resposta = await fetch(
+        SUPABASE_URL + "/auth/v1/health",
+        {
+          headers: {
+            "apikey": SUPABASE_KEY
+          }
+        }
+      );
+
+      if (resposta.ok) {
+        resultado.textContent =
+          "✅ Comunicação com Supabase funcionando!";
+      } else {
+        resultado.textContent =
+          "❌ Erro na conexão. Código: " + resposta.status;
+      }
+    } catch (erro) {
+      resultado.textContent =
+        "❌ Não foi possível conectar ao Supabase.";
+      console.error(erro);
+    }
+  }
+
+  testarSupabase();
+</script>
+
+<div
+  id="teste-supabase"
+  style="text-align:center; padding:20px; font-family:Arial;"
+>
+  Aguardando teste...
+</div>
 </body>
 </html>
